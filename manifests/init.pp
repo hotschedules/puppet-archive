@@ -27,7 +27,7 @@ class archive (
   $aws_cli_install    = false,
 ) inherits archive::params {
 
-  if $facts['os']['family'] == 'Windows' and !($seven_zip_provider in ['', undef]) {
+  if $::os['family'] == 'Windows' and !($seven_zip_provider in ['', undef]) {
     package { '7zip':
       ensure   => present,
       name     => $seven_zip_name,
@@ -38,7 +38,7 @@ class archive (
 
   if $aws_cli_install {
     # TODO: Windows support.
-    if $facts['os']['family'] != 'Windows' {
+    if $::os['family'] != 'Windows' {
       # Using bundled install option:
       # http://docs.aws.amazon.com/cli/latest/userguide/installing.html#install-bundle-other-os
 
