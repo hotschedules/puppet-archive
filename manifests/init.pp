@@ -21,10 +21,10 @@
 # }
 #
 class archive (
-  Optional[String] $seven_zip_name     = $archive::params::seven_zip_name,
-  Optional[String] $seven_zip_provider = $archive::params::seven_zip_provider,
-  Optional[String] $seven_zip_source   = undef,
-  Boolean          $aws_cli_install    = false,
+  $seven_zip_name     = $archive::params::seven_zip_name,
+  $seven_zip_provider = $archive::params::seven_zip_provider,
+  $seven_zip_source   = undef,
+  $aws_cli_install    = false,
 ) inherits archive::params {
 
   if $facts['os']['family'] == 'Windows' and !($seven_zip_provider in ['', undef]) {
