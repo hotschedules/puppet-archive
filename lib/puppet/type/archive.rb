@@ -149,7 +149,7 @@ Puppet::Type.newtype(:archive) do
 
   newparam(:checksum) do
     desc 'archive file checksum (match checksum_type).'
-    newvalues(%r{\b[0-9a-f]{5,128}\b}, :true, :false, :undef, nil, '')
+    newvalues(%r{\b[0-9a-f]{5,128}\b}, :true, :false, :undef, '')
     munge do |val|
       if val.nil? || val.empty? || val == :undef
         :false

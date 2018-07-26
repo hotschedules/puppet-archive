@@ -109,7 +109,7 @@ module PuppetX
               location = safe_escape(response['location'])
               new_uri = URI(location)
               new_uri = URI(uri.to_s + location) if new_uri.relative?
-              follow_redirect(new_uri, limit: limit, &block)
+              follow_redirect(new_uri, :limit => limit, &block)
             else
               raise Puppet::Error, "HTTP Error Code #{response.code}\nURL: #{uri}\nContent:\n#{response.body}"
             end
