@@ -29,10 +29,10 @@ module PuppetX
 
       def extract(path = root_dir, opts = {})
         opts = {
-          custom_command: nil,
-          options: '',
-          uid: nil,
-          gid: nil
+          :custom_command => nil,
+          :options => '',
+          :uid => nil,
+          :gid => nil
         }.merge(opts)
 
         custom_command = opts.fetch(:custom_command, nil)
