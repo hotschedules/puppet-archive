@@ -4,8 +4,8 @@ require 'puppet'
 describe Puppet::Type.type(:archive) do
   let(:resource) do
     Puppet::Type.type(:archive).new(
-      path: '/tmp/example.zip',
-      source: 'http://home.lan/example.zip'
+      :path => '/tmp/example.zip',
+      :source => 'http://home.lan/example.zip'
     )
   end
 
@@ -135,8 +135,8 @@ describe Puppet::Type.type(:archive) do
     let(:file_resource) { Puppet::Type.type(:file).new(name: '/tmp') }
     let(:archive_resource) do
       described_class.new(
-        path: '/tmp/example.zip',
-        source: 'http://home.lan/example.zip'
+        :path => '/tmp/example.zip',
+        :source => 'http://home.lan/example.zip'
       )
     end
 

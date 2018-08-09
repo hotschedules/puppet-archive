@@ -24,19 +24,19 @@ describe 'archive::go' do
 
     it do
       is_expected.to contain_archive('/opt/app/example.zip').with(
-        path: '/opt/app/example.zip',
-        source: 'http://home.lan:8081/go/example.zip',
-        checksum: '0d4f4b4b039c10917cfc49f6f6be71e4',
-        checksum_type: 'md5'
+        :path => '/opt/app/example.zip',
+        :source => 'http://home.lan:8081/go/example.zip',
+        :checksum => '0d4f4b4b039c10917cfc49f6f6be71e4',
+        :checksum_type => 'md5'
       )
     end
 
     it do
       is_expected.to contain_file('/opt/app/example.zip').with(
-        owner: '0',
-        group: '0',
-        mode: '0640',
-        require: 'Archive[/opt/app/example.zip]'
+        :owner => '0',
+        :group => '0',
+        :mode => '0640',
+        :require => 'Archive[/opt/app/example.zip]'
       )
     end
   end
@@ -60,19 +60,19 @@ describe 'archive::go' do
 
     it do
       is_expected.to contain_archive('/opt/app/example.zip').with(
-        path: '/opt/app/example.zip',
-        source: 'http://home.lan:8081/go/example.zip',
-        checksum: '0d4f4b4b039c10917cfc49f6f6be71e4',
-        checksum_type: 'md5'
+        :path => '/opt/app/example.zip',
+        :source => 'http://home.lan:8081/go/example.zip',
+        :checksum => '0d4f4b4b039c10917cfc49f6f6be71e4',
+        :checksum_type => 'md5'
       )
     end
 
     it do
       is_expected.to contain_file('/opt/app/example.zip').with(
-        owner: 'app',
-        group: 'app',
-        mode: '0400',
-        require: 'Archive[/opt/app/example.zip]'
+        :owner => 'app',
+        :group => 'app',
+        :mode => '0400',
+        :require => 'Archive[/opt/app/example.zip]'
       )
     end
   end

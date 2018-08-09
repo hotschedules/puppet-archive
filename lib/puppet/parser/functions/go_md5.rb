@@ -11,13 +11,13 @@ module Puppet::Parser::Functions
   # http://www.thoughtworks.com/products/docs/go/12.4/help/Artifacts_API.html
   #
   # Returns specific file's md5 from go server md5 checksum file
-  newfunction(:go_md5, type: :rvalue) do |args|
+  newfunction(:go_md5, :type => :rvalue) do |args|
     raise(ArgumentError, "Invalid go md5 info url #{args}") unless args.size == 4
 
     username, password, file, url = args
 
     uri = URI(url)
-    response = PuppetX::Bodeco::Util.content(uri, username: username, password: password)
+    response = PuppetX::Bodeco::Util.content(uri, :username => username, :password => password)
 
     checksums = response.split("\n")
     line = checksums.find { |x| x =~ %r{#{file}=} }

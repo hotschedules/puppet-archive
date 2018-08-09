@@ -17,15 +17,15 @@ describe 'archive::nexus' do
 
     it do
       is_expected.to contain_archive('/tmp/hawtio.war').with(
-        source: 'https://oss.sonatype.org/service/local/artifact/maven/content?g=io.hawt&a=hawtio-web&v=1.4.36&r=releases&p=war',
-        checksum_url: 'https://oss.sonatype.org/service/local/artifact/maven/content?g=io.hawt&a=hawtio-web&v=1.4.36&r=releases&p=war.md5'
+        :source => 'https://oss.sonatype.org/service/local/artifact/maven/content?g=io.hawt&a=hawtio-web&v=1.4.36&r=releases&p=war',
+        :checksum_url => 'https://oss.sonatype.org/service/local/artifact/maven/content?g=io.hawt&a=hawtio-web&v=1.4.36&r=releases&p=war.md5'
       )
     end
 
     it do
       is_expected.to contain_file('/tmp/hawtio.war').that_requires('Archive[/tmp/hawtio.war]').with(
-        owner: '0',
-        group: '0'
+        :owner => '0',
+        :group => '0'
       )
     end
   end
