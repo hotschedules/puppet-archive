@@ -161,10 +161,14 @@ Puppet::Type.type(:archive).provide(:ruby) do
   end
 
   def transfer_download(archive_filepath)
-    if resource[:temp_dir] && !File.directory?(resource[:temp_dir])
-      raise Puppet::Error, "Temporary directory #{resource[:temp_dir]} doesn't exist"
+    if resource[:temp_dir]
+      if !File.directory?(resource[:temp_dir])
+        raise Puppet::Error, "Temporary directory #{resource[:temp_dir]} doesn't exist"
+      end
+      tempfile = Tempfile.new(tempfile_name, resource[:temp_dir])
+    else
+      tempfile = Tempfile.new(tempfile_name)
     end
-    tempfile = Tempfile.new(tempfile_name, resource[:temp_dir])
 
     temppath = tempfile.path
     tempfile.close!
